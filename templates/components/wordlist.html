@@ -1,0 +1,10 @@
+{% import 'components/word.html' as wordcard %}
+
+{% macro wordlist(words,title) %}
+    <div>
+        {% if title %}<h2 class="word-list-title">{{title}}</h2>{% endif %}
+        {% for word in words %}
+            {{wordcard.wordcard(word.word.word,word.word.hotness,word.word.planFlag,word.word.tagFlag,word.link)}}
+        {% endfor %}
+    </div>
+{% endmacro %}

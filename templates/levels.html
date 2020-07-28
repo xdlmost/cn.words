@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="place-holder"></div>
+<div>
+    {% for i in levels %}
+    <div class="card" onclick="window.location.href='/explore/level/{{i.level}}?uid={{user.id}}'">
+        <div>第{{i.level}}级，已经浏览过{{i.view}}次</div>
+        <a data-tooltip="进度为{{i.view/2.5}}%" >
+            <div class="progress-bar" style="margin-top:10px;">
+                <div class="progress-index" style="margin-left:{{i.view/2.5}}%;"></div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

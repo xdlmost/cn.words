@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block tdk %}
+<title>{% block title%}{% endblock %}|呵呵大王在线工具</title>
+<meta name="keywords" content="{% block keywords%}{% endblock %}">
+<meta name="description" content="{% block description%}{% endblock %}">
+{% endblock %}
+{% block menu %}
+    {% include "menu_comp.html" ignore missing%}
+{% endblock %}
+
+{% block body%}
+    <div class="tool-title clearfix">
+        <h1 class="tool-name">{% block tool_title%}{% endblock %}</h1>
+        <button id="btn-like"><i class="icon-thumbs-up"></i> <span id="like-txt">点赞</span> (<span     id="like-num">{{data["l"]}}</span>)</button>
+        <button id="btn-view"><i class="icon-eye"></i> <span id="like-txt">访问</span> (<span id="like-num">{{data["v"]}}</span>)</button>
+    </div>
+    {% block tool_face%}{% endblock %}
+    {% block tool_info%}{% endblock %}
+{% endblock %}

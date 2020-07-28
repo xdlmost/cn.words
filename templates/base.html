@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        {% include "components/tdk.html" ignore missing%}
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='logo.ico') }}"  type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='word.css') }}">
+        {% block add_header %}{% endblock %}
+    </head>
+    <body>
+        <div class="home">
+            <a href="/index?uid={{user.id}}" >
+                <img class="home-image" src="{{ url_for('static', filename='home.png') }}" >
+            </a>
+        </div>
+        {% block body %}{% endblock %}
+        {% block add_footer %}{% endblock %}
+    </body>
+</html>

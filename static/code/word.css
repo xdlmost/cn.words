@@ -1,0 +1,510 @@
+body{
+  background-color: #F5F1E9;
+}
+
+td {
+	padding: 0;
+}
+
+.calendar-container {
+	width: 200px;
+}
+
+.calendar-container header {
+	border-radius: 1em 1em 0 0;
+	background: #e66b6b;
+	color: #fff;
+  padding: 0.5em 2em;
+  width: 100%;
+}
+
+.day {
+	font-size: 8em;
+	font-weight: 900;
+	line-height: 1em;
+}
+a.to-month{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: white;
+  margin: 0px 2px;
+}
+
+.month {
+	font-size: 1.5em;
+	line-height: 1em;
+	text-transform: lowercase;
+}
+
+.calendar {
+	background: #fff;
+	border-radius: 0 0 1em 1em;
+	-webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+	color: #555;
+  width: 100%;
+}
+
+.calendar thead {
+	color: #e66b6b;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.calendar td {
+	padding: 0em 0.5em;
+	text-align: center;
+}
+
+.calendar tbody td:hover {
+	background: #cacaca;
+	color: #fff;
+}
+
+.current-day {
+	color: #e66b6b;
+}
+
+.prev-month,
+.next-month {
+	color: #cacaca;
+}
+
+.ring-left,
+.ring-right {
+	position: absolute;
+	top: 230px;
+}
+
+.ring-left { left: 2em; }
+.ring-right { right: 2em; }
+
+.ring-left:before,
+.ring-left:after,
+.ring-right:before,
+.ring-right:after {
+	background: #fff;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 3px 1px rgba(0, 0, 0, .3), 0 -1px 1px rgba(0, 0, 0, .2);
+	box-shadow: 0 3px 1px rgba(0, 0, 0, .3), 0 -1px 1px rgba(0, 0, 0, .2);
+	content: "";
+	display: inline-block;
+	margin: 8px;
+	height: 32px;
+	width: 8px;
+}
+.log-tag{
+  font-weight: bold;
+  margin: 0px 5px;
+  color: darkgoldenrod;
+  font-size: larger;
+}
+.wordc{
+    width: 100%;
+}
+.left{
+    color: rgb(85, 18, 209);
+    font-size: 200px;
+    width: 6%;
+    display:inline-block;
+}
+.word{
+    width: 80%;
+    font-size: 400px;
+    text-align: center;
+    font-family: 宋体;
+    display:inline-block;
+}
+.log{
+    margin-top: 200px;
+}
+.bts{
+    width: 100%;
+}
+.bts-in{
+    margin: 0 auto;
+    width: 260px;
+}
+.pinyin{
+    width: 500px;
+    font-size: 150px;
+    text-align: center;
+    font-family: 宋体;
+    margin-left:-210px;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s;    
+}
+
+#slideTwo:checked~.pinyin {
+  height: 175px;
+}
+.slideTwo {
+    width: 80px;
+    height: 30px;
+    background: #333;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+  }
+  .slideTwo:after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    height: 2px;
+    width: 52px;
+    background: #111;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+  }
+  .slideTwo label {
+    display: block;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    left: 4px;
+    background: #fcfff4;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  }
+  .slideTwo label:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: #333;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px black, 0px 1px 0px rgba(255, 255, 255, 0.9);
+  }
+  .slideTwo input[type=checkbox] {
+    visibility: hidden;
+  }
+  .slideTwo input[type=checkbox]:checked + label {
+    left: 54px;
+  }
+  .slideTwo input[type=checkbox]:checked + label:after {
+    background: #27ae60;
+  }
+
+
+  .green {
+    background-color: #2ecc71;
+    box-shadow: 0px 5px 0px 0px #15B358;
+  }
+  
+  .green:hover {
+    background-color: #48E68B;
+  }
+  
+  .red {
+    background-color: #e74c3c;
+    box-shadow: 0px 5px 0px 0px #CE3323;
+  }
+  
+  .red:hover {
+    background-color: #FF6656;
+  }
+  .link:hover {
+    color: #2ecc71;
+    border-bottom: 2px dotted #2ecc71;
+  }
+  
+  
+  /* start da css for da buttons */
+  .btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+.btndisable{
+  pointer-events: none;
+  visibility: hidden;
+}
+  .btnnx {
+
+    font-size: 220px;
+    text-decoration: none;
+    color: rgb(85, 18, 209);
+    position: relative;
+    display: inline-block;
+  }
+  .btnnx:hover {
+    color: #FF6656;
+    font-size: 250px;
+  }
+  .btnnx:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+
+  }
+
+.card {
+  cursor: pointer;
+  background: #fff;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: .8rem;
+  border-radius: 3px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+.card:hover {
+  border-color: #ce9178;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.17);
+  webkit-transform: translate3d(0,-5px,0);
+  -moz-transform: translate3d(0,-5px,0);
+  -ms-transform: translate3d(0,-5px,0);
+  transform: translate3d(0,-5px,0);
+  -webkit-transition: ease-in-out .3s;
+  transition: ease-in-out .2s;
+  -moz-transition: ease-in-out .3s;
+  -ms-transition: ease-in-out .3s;
+  -o-transition: ease-in-out .3s;
+}
+.card dt {
+    height: 24px;
+}
+.card img {
+    height: 24px;
+    width: 24px;
+    float: left;
+}
+.card dt a {
+    color: #ce9178;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    float: left;
+    padding-left: 5px;
+}
+.card dd {
+    font-size: 12px;
+    color: #666;
+    padding-top: .5rem;
+}
+.card dd:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.word_item {
+  float: left;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  background: #befa82;
+}
+
+.word_in_item
+{
+  font-size: xx-large;
+  padding: 5px;
+}
+.word_in_item a:link,.word_in_item a:visited{
+  text-decoration:none;
+  color: #000;
+ }
+ .word_in_item a:hover{
+  text-decoration:none;
+  color: #70A8DE
+ }
+.status-list
+{
+  height:15px;
+}
+
+.progress-bar
+{
+    height: 8px;
+    background-image: linear-gradient(to right, #ff6656 , #2ecc71);
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.progress-bar .progress-index
+{
+  height: 8px;
+  background: #E6E1E1;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 120%;
+}
+
+i.imp{
+  font-size: 40px;
+  color: #70A8DE;
+}
+.place-holder
+{
+  height:35px;
+}
+.home
+{
+  position: fixed;
+}
+.home-image
+{
+  width:35px;
+}
+a.button-to
+{
+  padding: 10px 16px;
+  margin: 0 10px 0 0;
+  text-align: center;
+  border-radius: 4px;
+  background: #70A8DE;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.search-wrap{
+  width: 250px;
+  margin: 20px 0;
+}
+
+.search-ico
+{
+  width: 100%;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.img-status
+{
+  width: 15px;
+  margin-right: 5px;
+}
+
+.sec-place
+{
+  display: inline-block;
+}
+
+/**
+ * Tooltip Styles
+ */
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}

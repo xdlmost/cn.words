@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import 'components/wordlist.html' as wl %}
+
+{% block add_header %}
+    <script src="{{ url_for('static', filename='calendar.js') }}"></script>
+{% endblock %}
+
+{% block add_footer %}
+    <script>
+    var hehe=new Calendar({{dates| safe}},'{{showdate}}')
+    </script>
+{% endblock %}
+
+{% block body %}
+<div class="place-holder"></div>
+<div >
+  <div class="calendar-container">
+    <header id='calendar-title'>
+    </header>
+    <table class="calendar">
+      <thead>
+        <tr>
+          <td>一</td>
+          <td>二</td>
+          <td>三</td>
+          <td>四</td>
+          <td>五</td>
+          <td>六</td>
+          <td>日</td>
+        </tr>
+      </thead>
+      <tbody id="calendar-body">
+      </tbody>
+    </table>
+  </div> 
+</div> 
+<div style="display: grid;">
+    {{wl.wordlist(reviewWords,showdateStr)}}
+<div>
+{% endblock %}

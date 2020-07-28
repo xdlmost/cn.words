@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+
+{% import 'components/word.html' as wordcard %}
+
+{% macro _fromSysFlag(fromSys) %}
+    <div>
+        {% if title %}<h2 class="word-list-title">{{title}}</h2>{% endif %}
+        {% for word in words %}
+            {{wordcard.wordcard(word.word.word,word.word.hotness,word.word.planFlag,word.word.tagFlag,word.link)}}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% block body %}
+<div>
+    <div class="bts">
+        <div class="bts-in">
+            {% if navi and navi.yes%}
+                <a href="{{navi.yes}}" class="btn green ">会 </a>
+            {%else%}
+                <a href="#" class="btn green btndisable">会 </a>
+            {%endif%}
+
+            {% if navi and navi.no%}
+                <a href="{{navi.no}}" class="btn red ">不会</a>
+            {%else%}
+                <a href="#" class="btn red btndisable">不会</a>
+            {%endif%}
+        </div>
+    </div>
+    <div class="wordc">
+        <div>
+            <div class="left">
+                {% if navi and navi.pre%}
+                    <a href="{{navi.pre}}" class="btnnx">&#x2039;</a>
+                {%else%}
+                    <a href="#" class="btnnx btndisable">&#x2039;</a>
+                {%endif%}
+            </div>
+            <div class="word">{{word.word}}</div>
+            <div class="left">
+                {% if navi and navi.next%}
+                    <a href="{{navi.next}}" class="btnnx">&#x203a;</a>
+                {%else%}
+                    <a href="#" class="btnnx btndisable">&#x203a;</a>
+                {%endif%}
+            </div>
+        </div>
+        <div>
+            <section title=".slideTwo">
+              <!-- .slideTwo -->
+              <div class="slideTwo">  
+                <input type="checkbox" value="None" id="slideTwo" name="check" />
+                <label for="slideTwo"></label>
+                <div class="pinyin">{{word.pinyin}}<div>
+              </div>
+              <!-- end .slideTwo -->
+            </section>
+        </div>
+    </div>
+    <div class="log">
+    <div>分级:<i class='log-tag'>{{word.level}}</i></div>
+    <div>编号:<i class='log-tag'>{{word.id}}</i></div>
+    <div>偏旁:<i class='log-tag'>{{word.radicals}}</i></div>
+    <div>笔画:<i class='log-tag'>{{word.strokes}}</i></div>
+    <div>热度:<i class='log-tag'>{{word.hotness}}%</i></div>
+    <a data-tooltip="进度为{{word.hotness}}%" >
+        <div class="progress-bar" style="margin-top:10px;">
+            <div class="progress-index" style="margin-left:{{word.hotness}}%;"></div>
+        </div>
+    </a>
+    </div>
+    <div>共浏览了<i class='log-tag'>{{recordinfo.all}}</i>次</div>
+    <div>分级浏览<i class='log-tag'>{{recordinfo.explore}}</i>次,查询<i class='log-tag'>{{recordinfo.query}}</i>次,计划<i class='log-tag'>{{recordinfo.plan}}</i>次,复习<i class='log-tag'>{{recordinfo.review}}</i>次</div>
+    <div>认识<i class='log-tag'>{{recordinfo.yes}}</i>次,不认识<i class='log-tag'>{{recordinfo.no}}</i>次</div>
+    <div>
+    {%for r in recordinfo.list%}
+        <div>{{wordcard.MakeFromSysFlag(r._from)}}{{wordcard.MakeTagFlag(r.tag)}} 于{{r.time}}浏览</div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

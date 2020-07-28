@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import 'components/wordlist.html' as wl %}
+{% block body %}
+<div class="place-holder"></div>
+<div>
+    <div>你好,<i class="imp">{{user.name}}</i>。</div>
+    <div>本系统提供<i class="imp">{{moreInfo.allCount}}</i>个字可学习。</div>
+    <div>总共学习了<i class="imp">{{moreInfo.viewedCount}}</i>个字,进度为<i class="imp">{{moreInfo.viewedProgress}}%</i></div>
+    <a data-tooltip="进度为{{moreInfo.viewedProgress}}%" >
+        <div class="progress-bar" style="margin-top:10px;">
+            <div class="progress-index" style="margin-left:{{moreInfo.viewedProgress}}%;"></div>
+        </div>
+    </a>
+    <div>熟练掌握了<i class="imp">{{moreInfo.wellknownCount}}</i>个字,进度为<i class="imp">{{moreInfo.wellknownProgress}}%</i></div>
+    <a data-tooltip="进度为{{moreInfo.wellknownProgress}}%" >
+        <div class="progress-bar" style="margin-top:10px;">
+            <div class="progress-index" style="margin-left:{{moreInfo.wellknownProgress}}%;"></div>
+        </div>
+    </a>
+    <div>欢迎来到赫娜识字，你已经来到这里学字<i class="imp">{{moreInfo.planCount}}</i>天,其中<i class="imp">{{moreInfo.planDoneCount}}</i>天完成计划</div>
+    <div>你每天的计划复习量为<i class="imp">{{user.count}}</i>个字</div>
+    <div>
+        {% include "components/searchbar.html" ignore missing%}
+        <div style="display: inline-block;float: right;position: relative;top: -180px;">
+            <a  data-tooltip="樱赫的圣诞老人"><img style="width: 100px;display: block;" src="{{ url_for('static', filename='man.png') }}"/></a>
+            <a  data-tooltip="樱娜的圣诞树"><img style="width: 100px;display: block;" src="{{ url_for('static', filename='tree.png') }}"/></a>
+        </div>
+    </div>
+    <div class="sec-place">
+        <a class ="button-to" href="/explore/levels?uid={{user.id}}"> 分级浏览</a>
+    </div>
+    <div class="sec-place">
+        <a class ="button-to" href="/review/{{reviewDateStr}}?uid={{user.id}}"> 学习记录</a>
+    </div>
+    <div >
+        <div style="display: grid;">
+            {{wl.wordlist(planWords,"今日学习计划")}}
+        <div>
+        <div style="display: grid;">
+            {{wl.wordlist(reviewWords,"今日学习记录")}}
+        <div>
+    </div>
+
+
+</div>
+{% endblock %}

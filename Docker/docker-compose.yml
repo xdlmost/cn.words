@@ -1,0 +1,51 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    volumes:
+     - ../app:/webapp/app
+     - ../config/uwsgi:/webapp/config
+     - ../local:/local
+    networks:
+    - cc_net
+  heheking:
+    build: ./web
+    volumes:
+     - /home/xdlmost/projects/heheking/app:/webapp/app
+     - /home/xdlmost/projects/heheking/config/uwsgi:/webapp/config
+    networks:
+    - cc_net
+
+  cnwords:
+    build: ./web
+    volumes:
+     - /home/xdlmost/projects/cn.word/app:/webapp/app
+     - /home/xdlmost/projects/cn.word/config/uwsgi:/webapp/config
+    networks:
+    - cc_net
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+     - "80:80"
+     - "443:443"
+    networks:
+    - cc_net
+    volumes:
+     - ../config/nginx:/etc/nginx/conf.d
+     - ../static:/static
+     - /home/xdlmost/projects/heheking/baidu:/heheking/baidu
+     - ../config/nginx/cert:/etc/nginx/cert
+  mysql:
+    image: mysql:5.7
+    volumes: 
+    - ../static_db:/var/lib/mysql
+    ports:
+    - "43001:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=hehe
+    networks:
+    - cc_net
+
+networks:
+    cc_net:

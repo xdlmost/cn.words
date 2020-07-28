@@ -1,0 +1,78 @@
+{% macro MakeTagFlag(tagFlag) %}
+    {% if tagFlag != null %}
+        {% if tagFlag==-1%}
+            <a  data-tooltip="今日不会"><img class="img-status" src="{{ url_for('static', filename='cross.png') }}"/></a>
+        {% endif %}
+        {% if tagFlag==0%}
+            <a data-tooltip="今日浏览"><img class="img-status" src="{{ url_for('static', filename='exc.png') }}"/></a>
+        {% endif %}
+        {% if tagFlag==1%}
+            <a data-tooltip="今日会"><img class="img-status" src="{{ url_for('static', filename='check.png') }}"/></a>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+{% macro MakeFromSysFlag(fromSys) %}
+    {% if fromSys != null %}
+        {% if fromSys=="explore" %}
+            <a  data-tooltip="来自分级浏览"><img class="img-status" src="{{ url_for('static', filename='explore.png') }}"/></a>
+        {% endif %}
+        {% if fromSys=="query" %}
+            <a data-tooltip="来自查询"><img class="img-status" src="{{ url_for('static', filename='query.png') }}"/></a>
+        {% endif %}
+        {% if fromSys=="plan" %}
+            <a data-tooltip="来自计划"><img class="img-status" src="{{ url_for('static', filename='plan_done.png') }}"/></a>
+        {% endif %}
+        {% if fromSys=="review" %}
+            <a data-tooltip="来自复习"><img class="img-status" src="{{ url_for('static', filename='review.png') }}"/></a>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro _status(planFlag,tagFlag) %}
+    <div class="status-list">
+    {% if planFlag != null %}
+        {% if planFlag==1%}
+            <a data-tooltip="列入今日计划,已经学习完成"><img class="img-status"  src="{{ url_for('static', filename='plan_done.png') }}"/></a>
+        {% endif %}
+        {% if planFlag==0%}
+            <a data-tooltip="列入今日计划,尚未学习"><img class="img-status" src="{{ url_for('static', filename='plan.png') }}"/></a>
+        {% endif %}
+    {% endif %}
+    {{MakeTagFlag(tagFlag)}}
+    </div>
+{% endmacro %}
+
+{% macro wordcard(word,hotness,planFlag,tagFlag,link) %}
+    {% if hotness ==-1%}
+    <div class="word_item" style="background:bisque;">
+        <div class="word_in_item">
+            {% if link %}
+                <a href="{{link}}">{{word}}</a>
+            {% else %}
+                {{word}}
+            {% endif %}
+        </div>
+        <div class="progress-bar"  style="background:transparent;">
+            <div class="progress-index" ></div>
+        </div>
+        {{_status(planFlag,tagFlag)}}
+    </div>
+    {% else %}
+    <div class="word_item">
+        <div class="word_in_item">
+            {% if link %}
+                <a href="{{link}}">{{word}}</a>
+            {% else %}
+                {{word}}
+            {% endif %}
+        </div>
+        <a data-tooltip="熟悉度为{{hotness}}%">
+            <div class="progress-bar">
+                <div class="progress-index" style="margin-left:{{hotness}}%;"></div>
+            </div>
+        </a>
+        {{_status(planFlag,tagFlag)}}
+    </div>
+    {% endif %}
+{% endmacro %}
+

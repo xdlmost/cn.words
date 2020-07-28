@@ -1,0 +1,39 @@
+<div class="search-wrap">
+    <script type="text/javascript">
+    if (!window.word_search)
+    {
+        var getSearchString= function (key, Url) 
+        {
+            var str = Url;
+            str = str.substring(1, str.length); 
+            var arr = str.split("&");
+            var obj = new Object();
+            for (var i = 0; i < arr.length; i++) {
+                var tmp_arr = arr[i].split("=");
+                obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+            }
+        return obj[key];
+        }
+        window.word_search=function(){
+            var target=document.getElementById("search-word")
+            if(1==target.value.length)
+            {
+                var host=window.location.host;
+                var uid=getSearchString("uid",window.location.search);
+                window.location.href=window.location.protocol+'//'+host+'/query/word?uid='+uid+'&q='+target.value
+            }
+            else
+            {
+                target.value=""
+                window.alert("只能搜索单个字")
+            }
+        }
+    }
+    </script>
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="请输入要查找的字" id="search-word">
+      <button type="submit" class="searchButton" onclick="window.word_search();">
+        <img class="search-ico" src="{{ url_for('static', filename='search.png') }}" />
+     </button>
+   </div>
+</div>

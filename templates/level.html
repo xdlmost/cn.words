@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import 'components/wordlist.html' as wl %}
+
+{% block body %}
+<div class="place-holder"></div>
+<div>
+    <div style="display: grid;">
+        {{wl.wordlist(levelWords,levelTitle)}}
+    <div>
+</div>
+{% endblock %}
